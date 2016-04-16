@@ -1,16 +1,15 @@
 package start.controllers;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class HomeController {
+public class HomeController extends BaseController{
 
-    @RequestMapping("/test")
-    public String greeting() {
-        return "Hello World";
+    @RequestMapping("/home")
+    public String getHomePage() {
+        return "home";
     }
+
+
 }
