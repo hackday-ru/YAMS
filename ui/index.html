@@ -3,26 +3,56 @@
     <head>
         <title></title>
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
     </head>
     <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-brand">
+                YAMS
+            </div>
+          </div>
+        </nav>        
         <div class="container-fluid">
-            <nav class="navbar navbar-default">
-              <div class="container-fluid">
-                <div class="navbar-brand">
-                    YAMS
-                </div>
-              </div>
-            </nav>
-            <div class="jumbotron">
+            <div id="startScreen" class="jumbotron">
+                <h1>С чего начать?</h1>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Исполнитель/ Тэг/ Жанр/ Альбом/ Композиция" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-play
-    "></span></span>
+                    <input id="initialUserInput" type="text" class="form-control" placeholder="Исполнитель" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="startButton"><span class="glyphicon glyphicon-play"></span></span>
                 </div>
-            </div>            
+            </div>
+            <div class="hidden" id="listenScreen">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="img/cover.jpg" class="songCover song-cover">
+                        <h1 class="song-title">Distorting the Code</h1>
+                        <h2 class="song-author">Spinnerette</h2>
+                    </div>
+                    <div class="col-md-9">
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-        
+        <nav id="playerBar" class="hidden playerbar navbar navbar-inverse">
+          <div class="container-fluid">
+
+          </div>
+        </nav> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>        
+    <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        yamsPlayer.controls = {
+            startButton: $('#startButton'),
+            startScreen: $('#startScreen'),
+            listenScreen: $('#listenScreen'),
+            initialUserInput: $('#initialUserInput'),
+            playerBar: $('#playerBar')
+        };
+        
+        yamsPlayer.init();
+    </script>
     </body>
 </html>

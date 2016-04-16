@@ -1,0 +1,27 @@
+:root {
+  --accent-color: #F49100;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.playerbar {
+    position:fixed;
+    bottom:0;
+    margin:0;
+    width:100%;
+}
+
+.song-title {
+    font-size: 110%;
+}
+.song-author {
+    font-size: 90%;
+}
+
+.song-cover {
+    width: 100%;
+    height: auto;
+    border: 5px solid var(--accent-color);
+}
