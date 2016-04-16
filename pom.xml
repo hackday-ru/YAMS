@@ -19,6 +19,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
 
         </dependency>
+
+        <dependency>
+            <groupId>de.u-mass</groupId>
+            <artifactId>lastfm-java</artifactId>
+            <version>0.1.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
