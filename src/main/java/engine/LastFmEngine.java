@@ -21,7 +21,6 @@ public class LastFmEngine {
         return null;
     }
 
-
     private Recommendation getRecommendationByTag(Step step) {
         Recommendation r = new Recommendation(step);
 
@@ -29,7 +28,8 @@ public class LastFmEngine {
 
         Collection<Artist> simularArtists = Tag.getTopArtists(tagName, apiKey);
         for (Artist a : simularArtists) {
-            r.getArtists().add(a);
+            if(!a.getName().contains("null") && !a.getName().contains("undefined"))
+                r.getArtists().add(a);
         }
 
         Collection<Album> albums = Tag.getTopAlbums(tagName, apiKey);
@@ -40,13 +40,14 @@ public class LastFmEngine {
 
         Collection<Tag> tags = Tag.getSimilar(tagName, apiKey);
         for (Tag t : tags) {
-            r.getTags().add(t);
+            if(!t.getName().contains("null") && !t.getName().contains("undefined"))
+                r.getTags().add(t);
         }
 
         Collection<Track> tracks = Tag.getTopTracks(tagName, apiKey);
         for (Track t : tracks) {
-            //
-            r.getTracks().add(t);
+            if(!t.getName().contains("null") && !t.getName().contains("undefined"))
+                r.getTracks().add(t);
         }
 
         return r;
@@ -128,7 +129,7 @@ public class LastFmEngine {
                     urlval = urlrangs.get(url) + 1;
                 urlrangs.put(url, urlval);
 
-                if(urlval > new Random().nextInt(5))
+                if(urlval > 5)
                     urlval = -20;
 
                 double newRang = mul * (i/5 + localRang + tagRang + urlval);

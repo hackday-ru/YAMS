@@ -21,32 +21,35 @@ public class HomeController extends BaseController {
 
     @CrossOrigin()
     @RequestMapping(value = "/magic", method = RequestMethod.GET)
-    public Info Test(String name, String type, String reset, String albumArtist){
+    public Info Test(String name, String type, String reset) {
 
         try {
-            if(reset!=null)
+            if ("all".equals(reset))
                 steps.clear();
-            Step step = new Step();
-            step.setName(name);
-            step.setInputType(type);
-            step.setAlbumArtist(albumArtist);
+
+            Step step = null;
+            if ("back".equals(reset)) {
+                steps.remove(steps.size() - 1);
+            } else {
+                step = new Step();
+                step.setName(name);
+                step.setInputType(type);
+            }
             return Do(step);
         } catch (Exception e) {
             return new Info();
         }
     }
 
-    private Info Do(Step step){
+    private Info Do(Step step) {
         LastFmEngine engine = new LastFmEngine();
-
-        Recommendation r = engine.GetRecommendation(step);
-        steps.add(r);
-
+        if (step != null) {
+            Recommendation r = engine.GetRecommendation(step);
+            steps.add(r);
+        }
         Recommendation result = engine.Merge(steps);
         return result.getInfo();
     }
-
-
 
 
     @CrossOrigin()
@@ -56,8 +59,6 @@ public class HomeController extends BaseController {
         try {
             Collection<Step> readValues = new ObjectMapper().readValue(steps, new TypeReference<Collection<Step>>() {
             });
-
-
 
 
         } catch (Exception e) {
