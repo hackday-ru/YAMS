@@ -78,6 +78,9 @@ var yamsPlayer = {
     },
     
     builtRecomendationList: function(artists, tags) {
+        this.controls.artists.empty();
+        this.controls.tags.empty();
+        
         for(var i = 0; i < artists.length; i++) {
             this.controls.artists.append('<span class="artist-add">' + artists[i]  + '</span>, ')
         }
