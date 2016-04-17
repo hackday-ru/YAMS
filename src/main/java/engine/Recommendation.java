@@ -1,9 +1,8 @@
 package engine;
 
 import de.umass.lastfm.*;
-import start.models.Info;
-import start.models.Song;
-import start.models.Step;
+import de.umass.lastfm.Album;
+import start.models.*;
 
 import java.util.ArrayList;
 
@@ -45,8 +44,11 @@ public class Recommendation {
         for (int i = 0; i < 10; i++) {
             if(getArtists().size() > i)
                 info.getArtists().add(getArtists().get(i).getName());
-            if(getAlbums().size() > i)
-                info.getAlbums().add(getAlbums().get(i).getName());
+            if(getAlbums().size() > i) {
+                Album a = getAlbums().get(i);
+                start.models.Album aa = new start.models.Album(a.getName(), a.getArtist(), a.getImageURL(ImageSize.SMALL));
+                info.getAlbums().add(aa);
+            }
             if(getTags().size() > i)
                 info.getTags().add(getTags().get(i).getName());
             if(getTracks().size() > i) {

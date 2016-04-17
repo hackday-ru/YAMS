@@ -14,11 +14,11 @@ public class Info {
         this.artists = artists;
     }
 
-    private ArrayList<String> albums = new ArrayList<>();
-    public ArrayList<String> getAlbums() {
+    private ArrayList<Album> albums = new ArrayList<>();
+    public ArrayList<Album> getAlbums() {
         return albums;
     }
-    public void setAlbums(ArrayList<String> albums) {
+    public void setAlbums(ArrayList<Album> albums) {
         this.albums = albums;
     }
 

@@ -29,10 +29,6 @@ public class LastFmEngine {
 
         String tagName = step.getName();
 
-        Tag tag = Tag.getInfo(tagName, apiKey);
-        if (tag == null)
-            return r;
-
         Collection<Artist> simularArtists = Tag.getTopArtists(tagName, apiKey);
         for (Artist a : simularArtists) {
             r.getArtists().add(a);

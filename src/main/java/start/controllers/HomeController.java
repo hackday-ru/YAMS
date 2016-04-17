@@ -69,11 +69,6 @@ public class HomeController extends BaseController {
         artists.add("Abba");
         info.setArtists(artists);
 
-        ArrayList<String> albums = new ArrayList<>();
-        albums.add("Eat");
-        albums.add("Shit");
-        albums.add("Die");
-        info.setAlbums(albums);
 
         ArrayList<String> tags = new ArrayList<>();
         tags.add("oldschool");
