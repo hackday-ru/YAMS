@@ -23,13 +23,52 @@
             </div>
             <div class="hidden" id="listenScreen">
                 <div class="row">
-                    <div class="col-md-3">
-                        <img src="img/cover.jpg" class="songCover song-cover">
-                        <h1 class="song-title">Distorting the Code</h1>
-                        <h2 class="song-author">Spinnerette</h2>
+                    <div class="col-md-5">
+                        <div class="col-sm-3">
+                            <span class="accent-background glyphicon button glyphicon-menu-hamburger"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="img/cover.jpg" id="currentSong" class="songCover active song-cover">
+                            <h1 class="song-title">Distorting the Code</h1>
+                            <h2 class="song-author">Spinnerette</h2>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="accent-border glyphicon button glyphicon-tasks"></span>
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        
+                    <div class="col-md-7 playlist">
+                        <div class='row'>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                            <div class='col-sm-2'><img class="songCover song-cover" src="img/cover.jpg"></div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -49,7 +88,12 @@
             startScreen: $('#startScreen'),
             listenScreen: $('#listenScreen'),
             initialUserInput: $('#initialUserInput'),
-            playerBar: $('#playerBar')
+            playerBar: $('#playerBar'),
+            playlist: $('.playlist .songCover'),
+            currentSong: $('#currentSong'),
+            songTitle: $('.song-title'),
+            songAuthor: $('.song-author')
+            
         };
         
         yamsPlayer.init();

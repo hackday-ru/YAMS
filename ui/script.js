@@ -41,9 +41,11 @@ var yamsPlayer = {
         document.cookie = updatedCookie;
     },*/
     
-    getPlayList: function(data) {        
+    getPlayList: function(data) {
+        var me = this;
+        
         $.ajax({
-            method: "POST",
+            method: "GET",
             contentType: "text/plain",
             data: data,
             crossDomain: true,
@@ -51,21 +53,35 @@ var yamsPlayer = {
                 withCredentials: false
             },
             headers: {},
-            url: "http://eprupetw0021:8080/getstep",
-            success: function(resp) {console.log(resp)}
+            url: "http://eprupetw0021:8080/magic",
+            success: function(resp) {
+                    me.builtPlaylist(resp.playlist);
+                    me.switchView();
+                }
             });
+    },
+    
+    builtPlaylist: function(playlist) {
+        this.controls.currentSong.attr('src', playlist[0].cover);
+        this.controls.songTitle.text(playlist[0].title);
+        this.controls.songAuthor.text(playlist[0].artist);
+        
+        for(var i = 0; i < playlist.length; i++) {
+            $(this.controls.playlist[i]).attr('src', playlist[i].cover)
+        }
+    },
+    
+    switchView: function() {
+        this.controls.startScreen.addClass("hidden");
+        this.controls.listenScreen.removeClass("hidden");
+        this.controls.playerBar.removeClass("hidden");
     },
     
     startPlayback: function() {
         var name = this.controls.initialUserInput.val(),
-            data = JSON.stringify([{name: name, inputType: "artist"}]);
+            data = {name: name, type: "artist"};
         
         this.getPlayList(data);
-        this.controls.startScreen.addClass("hidden");
-        this.controls.listenScreen.removeClass("hidden");
-        this.controls.playerBar.removeClass("hidden");
-
-        console.info('Playback initiated');
     },
     
 
