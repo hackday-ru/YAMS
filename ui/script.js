@@ -12,6 +12,16 @@ var yamsPlayer = {
             if(key == 13) { me.controls.addButton.trigger('click') }
         });         
         this.controls.addButton.on('click', function(){me.nextStep.call(me)})
+        
+        $('#artists').on('click', '.artist-add', function(){
+            me.controls.nextUserInput.val($(this).text());
+            me.controls.addButton.trigger('click');
+        })
+        
+        $('#tags').on('click', '.tag-add', function(){
+            me.controls.nextUserInput.val($(this).text());
+            me.controls.addButton.trigger('click');
+        })
     },
     
 /*    getCookie: function(name) {
@@ -61,9 +71,20 @@ var yamsPlayer = {
             headers: {},
             url: "http://eprupetw0021:8080/magic",
             success: function(resp) {
+                    me.builtRecomendationList(resp.artists, resp.tags)
                     me.builtPlaylist(resp.playlist);
                 }
             });
+    },
+    
+    builtRecomendationList: function(artists, tags) {
+        for(var i = 0; i < artists.length; i++) {
+            this.controls.artists.append('<span class="artist-add">' + artists[i]  + '</span>, ')
+        }
+        
+        for(var i = 0; i < tags.length; i++) {
+            this.controls.tags.append('<span class="tag-add">' + tags[i]  + '</span>, ')
+        }
     },
     
     builtPlaylist: function(playlist) {

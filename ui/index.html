@@ -107,9 +107,12 @@
                             </button>
                         </div>
                     </div>
-<!--                <div class="modal-body">
-                    
-                </div>-->
+                <div class="modal-body">
+                    <h4>Артисты</h4>
+                    <div id="artists"></div>
+                    <h4>Тэги</h4>
+                    <div id="tags"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -129,8 +132,11 @@
             playlist: $('.playlist .songCover'),
             currentSong: $('#currentSong'),
             songTitle: $('.song-title'),
-            songAuthor: $('.song-author')
-            
+            songAuthor: $('.song-author'),
+            artists: $('#artists'),
+            tags: $('#tags'),
+            tagAdd: $('.tag-add'),
+            artistAdd: $('.artist-add')
         };
         
         yamsPlayer.init();

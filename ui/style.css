@@ -11,6 +11,10 @@
     text-align:center;
 }
 
+.artist-add, .tag-add {
+    cursor: pointer;
+}
+
 .playerbar {
     position:fixed;
     bottom:0;
