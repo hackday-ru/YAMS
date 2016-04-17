@@ -7,6 +7,10 @@
     border-radius: 0;
 }
 
+.center {
+    text-align:center;
+}
+
 .playerbar {
     position:fixed;
     bottom:0;
@@ -14,18 +18,56 @@
     width:100%;
 }
 
-.glyphicon.button {
+.timeline {
+    display: inline-block;
+    width: 60%;
+    height: 3px;
+    background: #ccc;
+}
+
+.time {
+    color: #fff;
+    margin: 0 0 0 15px;
+}
+
+.cover-wrap {
+    position: relative;
+}
+
+.actions {
+    position: absolute;
+    left: 20px;
+    color: #fff;
+    font-size: 2em;
+    bottom: 20px;
+}
+
+.playerbar .icon {
+    color: #fff;
+    font-size: 2em;
+    margin: 0 5px;
+}
+
+.icon {
+    position: relative;
+    top: 10px;
+}
+
+.glyphicon.button,
+.icon.button {
     font-size: 2em;
     padding:5px
 }
 
-.glyphicon.accent-background {
+.glyphicon.accent-background,
+.icon.accent-background{
     background: var(--accent-color);
     color: #fff;
     padding:10px
 }
 
-.glyphicon.accent-border {
+.glyphicon.accent-border,
+.icon.accent-border{
     border: 5px solid var(--accent-color);
     color: var(--accent-color);
 }
