@@ -55,8 +55,8 @@ var yamsPlayer = {
             headers: {},
             url: "http://eprupetw0021:8080/magic",
             success: function(resp) {
-                    me.builtPlaylist(resp.playlist);
                     me.switchView();
+                    me.builtPlaylist(resp.playlist);
                 }
             });
     },

@@ -4,6 +4,7 @@
         <title></title>
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
+        <link href="font.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -24,16 +25,23 @@
             <div class="hidden" id="listenScreen">
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 center">
                             <span class="accent-background glyphicon button glyphicon-menu-hamburger"></span>
                         </div>
                         <div class="col-sm-6">
-                            <img src="img/cover.jpg" id="currentSong" class="songCover active song-cover">
+                            <div class="cover-wrap">
+                                <div class="actions">
+                                    <span class="icon icon-like"></span>
+                                    <span class="icon icon-show-playlist"></span>
+                                    <span class="icon icon-about"></span>
+                                </div>
+                                <img src="img/cover.jpg" id="currentSong" class="songCover active song-cover">
+                            </div>
                             <h1 class="song-title">Distorting the Code</h1>
                             <h2 class="song-author">Spinnerette</h2>
                         </div>
-                        <div class="col-sm-3">
-                            <span class="accent-border glyphicon button glyphicon-tasks"></span>
+                        <div class="col-sm-3 center">
+                            <span class="accent-border icon button icon-options"></span>
                         </div>
                     </div>
                     <div class="col-md-7 playlist">
@@ -75,7 +83,11 @@
         </div>
         <nav id="playerBar" class="hidden playerbar navbar navbar-inverse">
           <div class="container-fluid">
-
+              <span type="submit" class="icon icon-prev"></span>
+              <span type="submit" class="icon icon-play"></span>  
+              <span type="submit" class="icon icon-next"></span>
+              <span class="timeline"></span>
+              <span class="time">00:00</span>
           </div>
         </nav> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
