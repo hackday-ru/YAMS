@@ -131,7 +131,7 @@ public class LastFmEngine {
                 if(urlval > new Random().nextInt(5))
                     urlval = -20;
 
-                double newRang = mul * (i/2 + localRang + tagRang + urlval);
+                double newRang = mul * (i/5 + localRang + tagRang + urlval);
                 if (tracks.containsKey(name)) {
                     Double rang = rangs.get(name);
                     rang += newRang;
@@ -207,7 +207,7 @@ public class LastFmEngine {
                 String name = a.getName();
 
                 double localRang = r.getAlbums().size() - j;
-                double newRang = mul * (i/4 + localRang);
+                double newRang = mul * (i/5 + localRang);
                 if (albums.containsKey(name)) {
                     Double rang = rangs.get(name);
                     rang += newRang;
