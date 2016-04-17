@@ -99,6 +99,7 @@ var yamsPlayer = {
         
         for(var i = 0; i < playlist.length; i++) {
             $(this.controls.playlist[i]).attr('src', playlist[i].cover)
+            $(this.controls.playlist[i]).attr('title', playlist[i].artist + " - " + playlist[i].title)
         }
         
         this.switchView();
