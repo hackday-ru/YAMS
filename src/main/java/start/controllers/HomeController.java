@@ -19,14 +19,17 @@ public class HomeController extends BaseController {
     private static ArrayList<Recommendation> steps = new ArrayList<>();
 
 
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public Info Test(String name, String type){
+    @CrossOrigin()
+    @RequestMapping(value = "/magic", method = RequestMethod.GET)
+    public Info Test(String name, String type, String reset, String albumArtist){
 
         try {
+            if(reset!=null)
+                steps.clear();
             Step step = new Step();
             step.setName(name);
             step.setInputType(type);
+            step.setAlbumArtist(albumArtist);
             return Do(step);
         } catch (Exception e) {
             return new Info();
