@@ -1,9 +1,6 @@
 package engine;
 
-import de.umass.lastfm.Album;
-import de.umass.lastfm.Artist;
-import de.umass.lastfm.Tag;
-import de.umass.lastfm.Track;
+import de.umass.lastfm.*;
 import start.models.Step;
 
 import java.util.*;
@@ -24,6 +21,7 @@ public class LastFmEngine {
         return null;
     }
 
+
     private Recommendation getRecommendationByTag(Step step) {
         Recommendation r = new Recommendation(step);
 
@@ -36,7 +34,8 @@ public class LastFmEngine {
 
         Collection<Album> albums = Tag.getTopAlbums(tagName, apiKey);
         for (Album a : albums) {
-            r.getAlbums().add(a);
+            if(!a.getName().contains("null") && !a.getName().contains("undefined"))
+                r.getAlbums().add(a);
         }
 
         Collection<Tag> tags = Tag.getSimilar(tagName, apiKey);
@@ -108,6 +107,7 @@ public class LastFmEngine {
 
     private void RangedSetTracks(ArrayList<Recommendation> steps, Recommendation res) {
         LinkedHashMap<String, Double> rangs = new LinkedHashMap<>();
+        HashMap<String, Integer> urlrangs = new HashMap<>();
         HashMap<String, Track> tracks = new HashMap<>();
         for (int i = steps.size() - 1; i >= 0; i--) {
             Recommendation r = steps.get(i);
@@ -121,7 +121,17 @@ public class LastFmEngine {
                     tagRang += FindTagIndex(r.getTags(), t);
                 }
                 double localRang = r.getTracks().size() - j;
-                double newRang = mul * (i*4 + localRang + tagRang);
+
+                String url = a.getImageURL(ImageSize.LARGE);
+                Integer urlval = 1;
+                if (urlrangs.containsKey(url))
+                    urlval = urlrangs.get(url) + 1;
+                urlrangs.put(url, urlval);
+
+                if(urlval > new Random().nextInt(5))
+                    urlval = -20;
+
+                double newRang = mul * (i/2 + localRang + tagRang + urlval);
                 if (tracks.containsKey(name)) {
                     Double rang = rangs.get(name);
                     rang += newRang;
@@ -197,7 +207,7 @@ public class LastFmEngine {
                 String name = a.getName();
 
                 double localRang = r.getAlbums().size() - j;
-                double newRang = mul * (i*4 + localRang);
+                double newRang = mul * (i/4 + localRang);
                 if (albums.containsKey(name)) {
                     Double rang = rangs.get(name);
                     rang += newRang;
@@ -236,7 +246,7 @@ public class LastFmEngine {
                 String name = a.getName();
 
                 double localRang = r.getArtists().size() - j;
-                double newRang = mul * (i*4 + localRang);
+                double newRang = mul * (i/4 + localRang);
                 if (artists.containsKey(name)) {
                     Double rang = artistsRangs.get(name);
                     rang += newRang;

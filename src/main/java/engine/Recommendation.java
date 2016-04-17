@@ -46,17 +46,20 @@ public class Recommendation {
                 info.getArtists().add(getArtists().get(i).getName());
             if(getAlbums().size() > i) {
                 Album a = getAlbums().get(i);
-                start.models.Album aa = new start.models.Album(a.getName(), a.getArtist(), a.getImageURL(ImageSize.SMALL));
+                start.models.Album aa = new start.models.Album(a.getName(), a.getArtist(), a.getImageURL(ImageSize.LARGE));
                 info.getAlbums().add(aa);
             }
             if(getTags().size() > i)
                 info.getTags().add(getTags().get(i).getName());
+        }
+        for (int i = 0; i < 20; i++) {
             if(getTracks().size() > i) {
                 Track t = getTracks().get(i);
-                Song s = new Song(t.getName(), t.getAlbum(), t.getArtist(), t.getImageURL(ImageSize.SMALL));
+                Song s = new Song(t.getName(), t.getAlbum(), t.getArtist(), t.getImageURL(ImageSize.LARGE));
                 info.getPlaylist().add(s);
             }
         }
+
         return info;
     }
 }

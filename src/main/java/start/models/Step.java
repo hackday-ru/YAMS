@@ -23,4 +23,12 @@ public class Step {
     public void setInputType(String inputType) {
         this.inputType = inputType;
     }
+
+    private String albumArtist;
+    public String getAlbumArtist() {
+        return albumArtist;
+    }
+    public void setAlbumArtist(String albumArtist) {
+        this.albumArtist = albumArtist;
+    }
 }
