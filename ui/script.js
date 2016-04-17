@@ -15,11 +15,13 @@ var yamsPlayer = {
         
         $('#artists').on('click', '.artist-add', function(){
             me.controls.nextUserInput.val($(this).text());
+            me.controls.nextUserInput.data('isTag', 'false')
             me.controls.addButton.trigger('click');
         })
         
         $('#tags').on('click', '.tag-add', function(){
             me.controls.nextUserInput.val($(this).text());
+            me.controls.nextUserInput.data('isTag', 'true')
             me.controls.addButton.trigger('click');
         })
     },
@@ -118,7 +120,8 @@ var yamsPlayer = {
 
     nextStep: function() {
         var name = this.controls.nextUserInput.val(),
-            data = {name: name, type: "artist"};
+            type = this.controls.nextUserInput.data('isTag') == "true" ? "tag" : "artist";
+            data = {name: name, type: type};
         
         this.getPlayList(data);        
     }
