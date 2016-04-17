@@ -52,7 +52,7 @@ public class Recommendation {
             if(getTags().size() > i)
                 info.getTags().add(getTags().get(i).getName());
         }
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 30; i++) {
             if(getTracks().size() > i) {
                 Track t = getTracks().get(i);
                 Song s = new Song(t.getName(), t.getAlbum(), t.getArtist(), t.getImageURL(ImageSize.LARGE));
