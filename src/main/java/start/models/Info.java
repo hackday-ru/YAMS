@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Aleksandr_Kugushev on 4/16/2016.
  */
 public class Info {
-    private ArrayList<String> artists;
+    private ArrayList<String> artists = new ArrayList<>();
     public ArrayList<String> getArtists() {
         return artists;
     }
@@ -14,7 +14,7 @@ public class Info {
         this.artists = artists;
     }
 
-    private ArrayList<String> albums;
+    private ArrayList<String> albums = new ArrayList<>();
     public ArrayList<String> getAlbums() {
         return albums;
     }
@@ -22,7 +22,7 @@ public class Info {
         this.albums = albums;
     }
 
-    private ArrayList<String> tags;
+    private ArrayList<String> tags = new ArrayList<>();
     public ArrayList<String> getTags() {
         return tags;
     }
@@ -30,7 +30,7 @@ public class Info {
         this.tags = tags;
     }
 
-    private ArrayList<Song> playlist;
+    private ArrayList<Song> playlist = new ArrayList<>();
     public ArrayList<Song> getPlaylist() {
         return playlist;
     }

@@ -16,28 +16,31 @@ import java.util.List;
 
 @RestController
 public class HomeController extends BaseController {
+    private static ArrayList<Recommendation> steps = new ArrayList<>();
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public Info Test(@RequestBody String steps){
+
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public Info Test(String name, String type){
 
         try {
-            Collection<Step> values = new ObjectMapper().readValue(steps, new TypeReference<Collection<Step>>() {
-            });
-
-            return Do(values);
+            Step step = new Step();
+            step.setName(name);
+            step.setInputType(type);
+            return Do(step);
         } catch (Exception e) {
             return new Info();
         }
     }
 
-    private Info Do(Collection<Step> values){
+    private Info Do(Step step){
         LastFmEngine engine = new LastFmEngine();
-        if (values.isEmpty())
-            return new Info();
 
-        Recommendation r = engine.GetRecommendation(values.iterator().next().getName());
-        return new Info();
-        //return r.getInfo();
+        Recommendation r = engine.GetRecommendation(step);
+        steps.add(r);
+
+        Recommendation result = engine.Merge(steps);
+        return result.getInfo();
     }
 
 
