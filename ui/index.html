@@ -41,7 +41,7 @@
                             <h2 class="song-author">Spinnerette</h2>
                         </div>
                         <div class="col-sm-3 center">
-                            <span class="accent-border icon button icon-options"></span>
+                            <span class="accent-border icon button icon-options" data-toggle="modal" data-target="#options"></span>
                         </div>
                     </div>
                     <div class="col-md-7 playlist">
@@ -90,6 +90,29 @@
               <span class="time">00:00</span>
           </div>
         </nav> 
+    <div class="modal fade" id="options" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <input id="nextUserInput" type="text" class="form-control" placeholder="Исполнитель" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="addButton"><span class="glyphicon glyphicon-plus"></span></span>
+                        </div>
+                    </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+<!--                <div class="modal-body">
+                    
+                </div>-->
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -97,9 +120,11 @@
     <script>
         yamsPlayer.controls = {
             startButton: $('#startButton'),
+            addButton: $('#addButton'),
             startScreen: $('#startScreen'),
             listenScreen: $('#listenScreen'),
             initialUserInput: $('#initialUserInput'),
+            nextUserInput: $('#nextUserInput'),
             playerBar: $('#playerBar'),
             playlist: $('.playlist .songCover'),
             currentSong: $('#currentSong'),

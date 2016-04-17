@@ -1,11 +1,17 @@
 var yamsPlayer = {
     init: function() {
         var me = this;
+        
         this.controls.initialUserInput.keypress(function (e) {
             var key = e.which;
             if(key == 13) { me.controls.startButton.trigger('click') }
         }); 
         this.controls.startButton.on('click', function(){me.startPlayback.call(me)});
+        this.controls.nextUserInput.keypress(function (e) {
+            var key = e.which;
+            if(key == 13) { me.controls.addButton.trigger('click') }
+        });         
+        this.controls.addButton.on('click', function(){me.nextStep.call(me)})
     },
     
 /*    getCookie: function(name) {
@@ -55,7 +61,6 @@ var yamsPlayer = {
             headers: {},
             url: "http://eprupetw0021:8080/magic",
             success: function(resp) {
-                    me.switchView();
                     me.builtPlaylist(resp.playlist);
                 }
             });
@@ -69,6 +74,8 @@ var yamsPlayer = {
         for(var i = 0; i < playlist.length; i++) {
             $(this.controls.playlist[i]).attr('src', playlist[i].cover)
         }
+        
+        this.switchView();
     },
     
     switchView: function() {
@@ -79,12 +86,17 @@ var yamsPlayer = {
     
     startPlayback: function() {
         var name = this.controls.initialUserInput.val(),
-            data = {name: name, type: "artist"};
+            data = {name: name, type: "artist", reset: "all"};
         
         this.getPlayList(data);
     },
     
 
-    
+    nextStep: function() {
+        var name = this.controls.nextUserInput.val(),
+            data = {name: name, type: "artist"};
+        
+        this.getPlayList(data);        
+    }
 }
 
